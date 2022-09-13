@@ -1,10 +1,22 @@
 from os import system
-global score
 score=0
 import time
 from random import randint
 alive = True
 
+def high_score_list():
+    global score, scores
+    hlist= r"ns.txt"
+    with open (hlist, "r") as file:
+        line = file.readline()
+        high_scores = [int(s) for s in line.split()]
+        if score in high_scores:
+            return
+        high_scores.append(score)
+        high_scores.sort()
+        with open (hlist, "w") as file :
+            for high_score in high_scores [::-1]:
+                    file.write(str(high_score)+ "")
 
 u_name = input("What is your name?\n")
 # eat, sleep, train, nerd, march
@@ -49,27 +61,6 @@ def eat():
         core_stats["food"] += 20
 
 
-
-def dedscreen():
-    with open('ns.txt', 'w') as f:
-        f.write(u_name, score)
-    print(f"Your Score: {score}\n")
-    print(f"The Leaderboard: {score}\n")
-    for i in range (10):
-        print(score)
-
-dedscreen()
-def choice_string_by_hour(hour, hourly_list):
-    options = hourly_list[str(hour)]
-    temp_str = "You can "
-    for index, choice in enumerate(options):      
-        temp_str = temp_str + choice
-        if index + 1 < len(options):
-            temp_str = temp_str + " OR "
-    return temp_str + "!"
-
-
-
 while alive:
     for h in range(6,23,1):
         choice = ""
@@ -93,7 +84,7 @@ while alive:
 
         system("cls")
         print(f"Great, you proceed to {choice.capitalize()}") 
-
+        score+=1
         time.sleep(1)
 
         if h == 22:
