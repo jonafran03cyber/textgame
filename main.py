@@ -55,8 +55,8 @@ while alive:
     for h in range(6,23,1):
         choice = ""
         system("cls")
-        print(f"The clock is now {i}:00")
-        while choice not in valid_choise_byhour[str(i)]:
+        print(f"The clock is now {h}:00")
+        while choice not in valid_choise_byhour[str(h)]:
             choice = input("What to do\n")
 
         print(f"The clock is now {h}:00, {u_name}, what to do?")
