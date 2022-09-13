@@ -2,34 +2,53 @@ from os import system
 global score
 score=0
 import time
+from random import randint
 alive = True
 
-u_name = input("What is your name?\n")
 
+u_name = input("What is your name?\n")
+# eat, sleep, train, nerd, march
 valid_choise_byhour = {
-    "6":["shine shoes"],
+    "6":["shine shoes", "eat"],
     "7":["shine shoes"],
     "8":["shine shoes"],
     "9":["shine shoes"],
     "10":["shine shoes"],
-    "11":["shine shoes"],
+    "11":["shine shoes","eat"],
     "12":["shine shoes"],
     "13":["shine shoes"],
     "14":["shine shoes"],
     "15":["shine shoes"],
-    "16":["shine shoes"],
+    "16":["shine shoes","eat"],
     "17":["shine shoes"],
     "18":["shine shoes"],
     "19":["shine shoes"],
     "20":["shine shoes"],
-    "21":["shine shoes"],
+    "21":["shine shoes","eat"],
     "22":["shine shoes"],
     "23":["shine shoes"]
 }
 core_stats = {
+    "food": 100,
     "shoe_shine":0,
-    "energy": 100
+    "health": 100,
+    "luck": 0
 }
+def shine_shoes():
+    r = randint(0,5) + core_stats["luck"]
+    core_stats["shoe_shine"] += (r*r)
+    core_stats["luck"] += r
+
+def eat():
+    r = randint(0,100) + core_stats["luck"]
+    if r < 30:
+        print("Ison va gammal o möglig")
+        print("-30 i mat")
+        core_stats["food"] -= 20
+    else:
+        core_stats["food"] += 20
+
+
 
 def dedscreen():
     with open('ns.txt', 'w') as f:
