@@ -1,5 +1,4 @@
 from os import system
-score=0
 import time
 from random import randint
 alive = True
@@ -48,10 +47,8 @@ core_stats = {
 }
 def shine_shoes():
     print("Great choice")
-    r = randint(0,100)
-    if core_stats["shoe_shine"]> 500:
-        print("fin puts, förtjänstfullt! sade fänrik Höglund")
-        alive = False
+    r = randint(0,200)
+
 
     if r<20:
         print("You fucked up")
@@ -59,6 +56,13 @@ def shine_shoes():
     else:
         print("nice, shpe shine increased bye", r)
         core_stats["shoe_shine"] += r
+    
+    if core_stats["shoe_shine"]> 500:
+        time.sleep(2)
+        system("cls")
+        print("fin puts, förtjänstfullt! sade fänrik Höglund")
+        print("Du vann!! Hurra!!")
+        time.sleep(200)
 
 def eat():
     r = randint(0,100) + core_stats["luck"]
@@ -68,17 +72,17 @@ def eat():
         core_stats["food"] -= 20
     else:
         core_stats["food"] += 50
-        print("Plus 20 mat")
+        print("Plus 50 mat")
+def train():
+    r = randint(0,100) + core_stats["luck"]
+    if r < 30:
+        print("Du stuka foten")
+        print("-30 i hälsa")
+        core_stats["food"] -= 20
+    else:
+        core_stats["food"] += 50
+        print("Plus 50 hälsa")
 
-
-
-def dedscreen():
-    with open('ns.txt', 'w') as f:
-        f.write(u_name, score)
-    print(f"Your Score: {score}\n")
-    print(f"The Leaderboard: {score}\n")
-    for i in range (10):
-        print(score)
 
 #dedscreen()
 def choice_string_by_hour(hour, hourly_list):
@@ -129,6 +133,8 @@ while alive:
         else:
             if choice == "eat":
                 eat()
+            if choice == "train":
+                train()
         standard_output()
 
         time.sleep(2)
