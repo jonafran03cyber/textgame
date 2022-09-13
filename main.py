@@ -35,16 +35,21 @@ core_stats = {
     "luck": 0
 }
 def shine_shoes():
-    r = randint(0,5) + core_stats["luck"]
-    core_stats["shoe_shine"] += (r*r)
-    core_stats["luck"] += r
+    print("Great choice")
+    r = randint(0,100)
+    if r<20:
+        print("You fucked up")
+        core_stats["shoe_shine"]-=r
+    else:
+        print("nice, shpe shine increased bye", r)
+        core_stats["shoe_shine"] += r
 
 def eat():
     r = randint(0,100) + core_stats["luck"]
     if r < 30:
         print("Ison va gammal o möglig")
         print("-30 i mat")
-        core_stats["food"] -= 20
+        core_stats["food"] -= 30
     else:
         core_stats["food"] += 20
 
@@ -58,7 +63,7 @@ def dedscreen():
     for i in range (10):
         print(score)
 
-dedscreen()
+#dedscreen()
 def choice_string_by_hour(hour, hourly_list):
     options = hourly_list[str(hour)]
     temp_str = "You can "
@@ -68,16 +73,20 @@ def choice_string_by_hour(hour, hourly_list):
             temp_str = temp_str + " OR "
     return temp_str + "!"
 
+def standard_output():
+    print("="*50)
+    for stat in core_stats.keys():
+        print(stat, " : ", core_stats[stat])
+    print("="*50)
+
+
 
 
 while alive:
     for h in range(6,23,1):
-        choice = ""
         system("cls")
-        print(f"The clock is now {h}:00")
-        while choice not in valid_choise_byhour[str(h)]:
-            choice = input("What to do\n")
 
+        choice = ""
         print(f"The clock is now {h}:00, {u_name}, what to do?")
         # You can do ____ OR ____
         print(choice_string_by_hour(h,valid_choise_byhour))
@@ -93,8 +102,14 @@ while alive:
 
         system("cls")
         print(f"Great, you proceed to {choice.capitalize()}") 
+        if choice == "shine shoes":
+            shine_shoes()
+        else:
+            if choice == "eat":
+                eat()
+        time.sleep(2)
+        standard_output()
 
-        time.sleep(1)
 
         if h == 22:
             print("Good night")
