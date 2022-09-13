@@ -2,7 +2,7 @@ from os import system
 score=0
 import time
 from random import randint
-global alive = True
+alive = True
 
 def high_score_list():
     global score, scores
@@ -22,23 +22,23 @@ u_name = input("What is your name?\n")
 # eat, sleep, train, nerd, march
 valid_choise_byhour = {
     "6":["shine shoes", "eat"],
-    "7":["shine shoes"],
-    "8":["shine shoes"],
-    "9":["shine shoes"],
-    "10":["shine shoes"],
-    "11":["shine shoes","eat"],
-    "12":["shine shoes"],
-    "13":["shine shoes"],
-    "14":["shine shoes"],
-    "15":["shine shoes"],
-    "16":["shine shoes","eat"],
-    "17":["shine shoes"],
-    "18":["shine shoes"],
-    "19":["shine shoes"],
-    "20":["shine shoes"],
-    "21":["shine shoes","eat"],
-    "22":["shine shoes"],
-    "23":["shine shoes"]
+    "7":["shine shoes","train","march"],
+    "8":["shine shoes","train","march"],
+    "9":["shine shoes","train","march"],
+    "10":["shine shoes","train","march"],
+    "11":["shine shoes","train","march","eat"],
+    "12":["shine shoes","train","march"],
+    "13":["shine shoes","train","march"],
+    "14":["shine shoes","train","march"],
+    "15":["shine shoes","train","march"],
+    "16":["shine shoes","train","march","eat"],
+    "17":["shine shoes","train","march"],
+    "18":["shine shoes","train","march"],
+    "19":["shine shoes","train","march"],
+    "20":["shine shoes","train","march"],
+    "21":["shine shoes","train","march","eat"],
+    "22":["shine shoes","train","march"],
+    "23":["shine shoes","train","march"]
 }
 core_stats = {
     "food": 100,
@@ -51,6 +51,7 @@ def shine_shoes():
     r = randint(0,100)
     if core_stats["shoe_shine"]> 500:
         print("fin puts, förtjänstfullt! sade fänrik Höglund")
+        alive = False
 
     if r<20:
         print("You fucked up")
