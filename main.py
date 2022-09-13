@@ -2,7 +2,7 @@ from os import system
 score=0
 import time
 from random import randint
-alive = True
+global alive = True
 
 def high_score_list():
     global score, scores
@@ -49,6 +49,9 @@ core_stats = {
 def shine_shoes():
     print("Great choice")
     r = randint(0,100)
+    if core_stats["shoe_shine"]> 500:
+        print("fin puts, förtjänstfullt! sade fänrik Höglund")
+
     if r<20:
         print("You fucked up")
         core_stats["shoe_shine"]-=r
@@ -61,9 +64,10 @@ def eat():
     if r < 30:
         print("Ison va gammal o möglig")
         print("-30 i mat")
-        core_stats["food"] -= 30
+        core_stats["food"] -= 20
     else:
-        core_stats["food"] += 20
+        core_stats["food"] += 50
+        print("Plus 20 mat")
 
 
 
@@ -93,7 +97,9 @@ def standard_output():
 
 
 
-
+txt = open("./backstroy.txt","r").read()
+print(txt)
+time.sleep(12)
 while alive:
     for h in range(6,23,1):
         system("cls")
@@ -112,6 +118,9 @@ while alive:
                 choice = input("Not valid option\n").lower()
             tmp_cnt +=1
 
+
+        core_stats["food"]-=5
+        core_stats["health"]-=5
         system("cls")
         print(f"Great, you proceed to {choice.capitalize()}") 
         if choice == "shine shoes":
@@ -119,8 +128,9 @@ while alive:
         else:
             if choice == "eat":
                 eat()
-        time.sleep(2)
         standard_output()
+
+        time.sleep(2)
 
 
         if h == 22:
