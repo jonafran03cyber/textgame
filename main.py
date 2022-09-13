@@ -1,10 +1,22 @@
 from os import system
-global score
 score=0
 import time
 from random import randint
 alive = True
 
+def high_score_list():
+    global score, scores
+    hlist= r"ns.txt"
+    with open (hlist, "r") as file:
+        line = file.readline()
+        high_scores = [int(s) for s in line.split()]
+        if score in high_scores:
+            return
+        high_scores.append(score)
+        high_scores.sort()
+        with open (hlist, "w") as file :
+            for high_score in high_scores [::-1]:
+                    file.write(str(high_score)+ "")
 
 u_name = input("What is your name?\n")
 # eat, sleep, train, nerd, march
