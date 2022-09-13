@@ -1,12 +1,9 @@
 from os import system
-<<<<<<< HEAD
 global score
 score=0
-=======
 import time
 alive = True
 
->>>>>>> f21cc21fbfcf7176c5566f9a653d1871b6e3fbef
 u_name = input("What is your name?\n")
 
 valid_choise_byhour = {
@@ -34,7 +31,6 @@ core_stats = {
     "energy": 100
 }
 
-<<<<<<< HEAD
 def dedscreen():
     with open('ns.txt', 'w') as f:
         f.write(u_name, score)
@@ -44,7 +40,6 @@ def dedscreen():
         print(score)
 
 dedscreen()
-=======
 def choice_string_by_hour(hour, hourly_list):
     options = hourly_list[str(hour)]
     temp_str = "You can "
@@ -53,7 +48,6 @@ def choice_string_by_hour(hour, hourly_list):
         if index + 1 < len(options):
             temp_str = temp_str + " OR "
     return temp_str + "!"
->>>>>>> f21cc21fbfcf7176c5566f9a653d1871b6e3fbef
 
 
 
@@ -61,12 +55,10 @@ while alive:
     for h in range(6,23,1):
         choice = ""
         system("cls")
-<<<<<<< HEAD
         print(f"The clock is now {i}:00")
         while choice not in valid_choise_byhour[str(i)]:
             choice = input("What to do\n")
 
-=======
         print(f"The clock is now {h}:00, {u_name}, what to do?")
         # You can do ____ OR ____
         print(choice_string_by_hour(h,valid_choise_byhour))
@@ -88,4 +80,3 @@ while alive:
         if h == 22:
             print("Good night")
             time.sleep(2)
->>>>>>> f21cc21fbfcf7176c5566f9a653d1871b6e3fbef
